@@ -8,6 +8,7 @@ import time
 headers = {"User-Agent": "Mozilla/5.0"}
 
 # --- Collect post data ---
+posts = []
 uc_subreddits = [
     "Berkeley",
     "ucla",
@@ -25,10 +26,9 @@ import requests, time, pandas as pd
 
 headers = {"User-Agent": "script:ucsd-scraper:v1.0 (by u/war1ock970)"}
 
-
+posts = []
 seen_ids = set()  # <-- store unique Reddit post 
 for uc in uc_subreddits:
-    posts = []
     for listing in ["top", "hot", "new"]:  # cycle through listing types
         time.sleep(1)  # avoid rate limit
         url = f"https://www.reddit.com/r/{uc}/{listing}/.json?limit=100"
